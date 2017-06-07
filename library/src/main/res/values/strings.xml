@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">library</string>
+    <string name="info_loding" translatable="false">数据加载中...</string>
+</resources>

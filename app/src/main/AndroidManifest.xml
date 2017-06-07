@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="wuhui.wuhuidemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ac.FirstAc" />
+        <activity android:name=".ac.GreenDbActivity" />
+        <activity android:name=".ac.QuanXianAc" />
+        <activity
+            android:name=".ac.ZheDieAc"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".ac.CustomViewAc"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".ac.ZuoBiaoXiAc"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".ac.CustomViewAndAnimationAc"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".ac.AutoScrollActivity"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".ac.DaggerActivity"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".ac.AnimtaionAc"
+            android:hardwareAccelerated="false" />
+        <activity android:name=".ac.ActivityService" />
+        <activity android:name=".ac.ActivityPlayer" />
+        <activity android:name=".ac.HandlerActivity" />
+        <activity android:name=".ac.RxJavaRetrofit" />
+        <!-- <activity -->
+        <!-- android:name="cn.steelhome.handinfo.Activity.EntryActivity" -->
+        <!-- android:hardwareAccelerated="false" /> -->
+        <service android:name=".service.MyService"></service>
+        <service
+            android:name=".service.PlayerService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.wuhui.aidl.playservice"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

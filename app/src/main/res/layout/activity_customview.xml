@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <wuhui.wuhuidemo.view.RegionClickView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/regionClickView" />
+
+        <wuhui.wuhuidemo.view.CustomPathMeasure
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <wuhui.wuhuidemo.view.BezierView
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <wuhui.wuhuidemo.view.BezierView2
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <wuhui.wuhuidemo.view.CustomView
+            android:id="@+id/cv"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+        <wuhui.wuhuidemo.view.LoadView
+            android:id="@+id/lv"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+        <wuhui.wuhuidemo.view.RadarView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+
+        <Button
+            android:id="@+id/animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="启动" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
