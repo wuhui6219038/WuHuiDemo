@@ -10,14 +10,21 @@
         android:layout_height="200dp"
         android:background="@android:color/holo_purple">
 
-        <TextView
+        <wuhui.wuhuidemo.view.TestLl
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/holo_blue_light"
-            android:gravity="center"
-            android:text="第一个" />
+            android:layout_height="match_parent">
+
+            <wuhui.wuhuidemo.view.TestTv
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:text="第一个" />
+        </wuhui.wuhuidemo.view.TestLl>
 
         <TextView
+            android:id="@+id/tv2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/holo_red_light"
@@ -25,6 +32,7 @@
             android:text="第二个" />
 
         <TextView
+            android:id="@+id/tv3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/holo_orange_dark"

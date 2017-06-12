@@ -119,6 +119,18 @@
                 android:layout_height="wrap_content"
                 android:text="Rx_Retrofit" />
 
+            <Button
+                android:id="@+id/btn16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="滑动冲突方向不一致" />
+
+            <Button
+                android:id="@+id/btn17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="滑动冲突方向一致" />
+
 
         </LinearLayout>
 

@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.tencent.android.tpush.XGIOperateCallback;
+import com.tencent.android.tpush.XGPushConfig;
+import com.tencent.android.tpush.XGPushManager;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
@@ -33,6 +36,7 @@ import wuhui.library.network.listener.OnNextBaseAdapter;
 import wuhui.wuhuidemo.HttpService.HttpGetService;
 import wuhui.wuhuidemo.ac.ActivityPlayer;
 import wuhui.wuhuidemo.ac.ActivityService;
+import wuhui.wuhuidemo.ac.Activity_Scroll_Unsame;
 import wuhui.wuhuidemo.ac.AnimtaionAc;
 import wuhui.wuhuidemo.ac.AutoScrollActivity;
 import wuhui.wuhuidemo.ac.CustomViewAc;
@@ -60,6 +64,7 @@ public class MainActivity extends RxAppCompatActivity {
         tbToolbar = (Toolbar) findViewById(R.id.tb_toolbar);
         setSupportActionBar(tbToolbar);
         ButterKnife.bind(this);
+        _initXinGe();
         AndPermission.with(this).requestCode(100)
                 .permission(Manifest.permission.WRITE_CONTACTS,
                         Manifest.permission.READ_SMS)
@@ -85,6 +90,21 @@ public class MainActivity extends RxAppCompatActivity {
                 }).start();
     }
 
+    private void _initXinGe() {
+        XGPushConfig.enableDebug(this, true);
+        XGPushManager.registerPush(getApplicationContext(), new XGIOperateCallback() {
+            @Override
+            public void onSuccess(Object data, int flag) {
+                Log.d("TPush", "注册成功，设备token为：" + data);
+            }
+
+            @Override
+            public void onFail(Object data, int errCode, String msg) {
+                Log.d("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
+            }
+        });
+    }
+
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
@@ -97,7 +117,8 @@ public class MainActivity extends RxAppCompatActivity {
         Log.e(TAG, "onRestoreInstanceState");
     }
 
-    @OnClick({R.id.btn1, R.id.btn2, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9, R.id.btn10, R.id.btn11, R.id.btn12, R.id.btn13, R.id.btn14, R.id.btn15})
+    @OnClick({R.id.btn1, R.id.btn2, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9,
+            R.id.btn10, R.id.btn11, R.id.btn12, R.id.btn13, R.id.btn14, R.id.btn15,R.id.btn16})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -148,6 +169,9 @@ public class MainActivity extends RxAppCompatActivity {
                 break;
             case R.id.btn15:
                 intent.setClass(this, RxJavaRetrofit.class);
+                break;
+            case R.id.btn16:
+                intent.setClass(this, Activity_Scroll_Unsame.class);
                 break;
         }
         startActivity(intent);
