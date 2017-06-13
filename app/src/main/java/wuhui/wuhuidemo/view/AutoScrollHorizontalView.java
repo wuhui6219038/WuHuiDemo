@@ -52,7 +52,7 @@ public class AutoScrollHorizontalView extends ViewGroup {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.e(TAG, "dispatchTouchEvent");
+        //Log.e(TAG, "dispatchTouchEvent");
         return super.dispatchTouchEvent(ev);
     }
 
@@ -124,7 +124,7 @@ public class AutoScrollHorizontalView extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.e("AutoScrollActivity", "父控件");
+    //    Log.e("AutoScrollActivity", "父控件");
         int x = (int) event.getRawX();
         int y = (int) event.getRawY();
         switch (event.getAction()) {
@@ -186,7 +186,7 @@ public class AutoScrollHorizontalView extends ViewGroup {
             cost = false;
         }
 
-        return cost;
+        return false;
     }
 
     private void animtaion() {

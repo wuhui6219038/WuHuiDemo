@@ -2,6 +2,7 @@ package wuhui.wuhuidemo.ac;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.SimpleAdapter;
 
@@ -10,6 +11,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import wuhui.wuhuidemo.R;
+import wuhui.wuhuidemo.view.CommomBoom;
 import wuhui.wuhuidemo.view.MyListView;
 
 /**
@@ -43,5 +45,12 @@ public class Activity_Scroll_Unsame extends RxAppCompatActivity {
         lv1.setAdapter(adapter);
         lv2.setAdapter(adapter2);
         lv3.setAdapter(adapter3);
+        final CommomBoom commomBoom = (CommomBoom) findViewById(R.id.commonbar);
+        commomBoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                commomBoom.doPost("接受了吗");
+            }
+        });
     }
 }

@@ -12,9 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.tencent.android.tpush.XGIOperateCallback;
-import com.tencent.android.tpush.XGPushConfig;
-import com.tencent.android.tpush.XGPushManager;
+//import com.tencent.android.tpush.XGIOperateCallback;
+//import com.tencent.android.tpush.XGPushConfig;
+//import com.tencent.android.tpush.XGPushManager;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionListener;
@@ -91,18 +91,18 @@ public class MainActivity extends RxAppCompatActivity {
     }
 
     private void _initXinGe() {
-        XGPushConfig.enableDebug(this, true);
-        XGPushManager.registerPush(getApplicationContext(), new XGIOperateCallback() {
-            @Override
-            public void onSuccess(Object data, int flag) {
-                Log.d("TPush", "注册成功，设备token为：" + data);
-            }
-
-            @Override
-            public void onFail(Object data, int errCode, String msg) {
-                Log.d("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
-            }
-        });
+//        XGPushConfig.enableDebug(this, true);
+//        XGPushManager.registerPush(getApplicationContext(), new XGIOperateCallback() {
+//            @Override
+//            public void onSuccess(Object data, int flag) {
+//                Log.d("TPush", "注册成功，设备token为：" + data);
+//            }
+//
+//            @Override
+//            public void onFail(Object data, int errCode, String msg) {
+//                Log.d("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
+//            }
+//        });
     }
 
     @Override
