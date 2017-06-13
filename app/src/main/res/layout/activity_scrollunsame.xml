@@ -3,13 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <wuhui.wuhuidemo.view.MyListView
-        android:id="@+id/lv1"
+    <wuhui.wuhuidemo.view.TestLl
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_blue_light"
-        android:gravity="center"
-        android:text="第一个" />
+        android:orientation="vertical">
+
+        <wuhui.wuhuidemo.view.TestTv
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@android:color/holo_green_dark"
+            android:text="我是头部" />
+
+        <wuhui.wuhuidemo.view.MyListView
+            android:id="@+id/lv1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:text="第一个" />
+    </wuhui.wuhuidemo.view.TestLl>
 
     <wuhui.wuhuidemo.view.MyListView
         android:id="@+id/lv2"
@@ -31,12 +43,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:gravity="center">
 
         <wuhui.wuhuidemo.view.CommomBoom
+            android:id="@+id/commonbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:background="@android:color/holo_blue_dark" />
 
     </LinearLayout>
