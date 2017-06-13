@@ -71,9 +71,10 @@ public class AutoScrollView extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        measureChildren(widthMeasureSpec, heightMeasureSpec);
+        // measureChildren(widthMeasureSpec, heightMeasureSpec);
         mWidth = getMeasuredWidth();
         mHeight = getMeasuredHeight();
+//        measure(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         Log.e("mWidth,mHeight", mWidth + "  " + mHeight);
         scrollTo(0, mStartItem * mHeight);
     }
