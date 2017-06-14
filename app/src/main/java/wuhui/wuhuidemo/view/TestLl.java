@@ -76,14 +76,16 @@ public class TestLl extends LinearLayout {
 
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                setScrollY(0);
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 int dy = 0;
                 dy = y - mLastY;
                 View chlidView = getChildAt(0);
-                if (getScrollY() <= chlidView.getHeight())
+                //只能向上滑，不能想下滑动
+                if (dy < 0 && getScrollY() <= chlidView.getHeight()) {
                     scrollBy(0, -dy);
+                }
                 mLastY = y;
                 break;
             case MotionEvent.ACTION_UP:
