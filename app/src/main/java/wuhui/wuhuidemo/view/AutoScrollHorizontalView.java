@@ -186,7 +186,7 @@ public class AutoScrollHorizontalView extends ViewGroup {
             cost = false;
         }
 
-        return false;
+        return cost;
     }
 
     private void animtaion() {

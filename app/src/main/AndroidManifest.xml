@@ -34,11 +34,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ac.FirstAc" />
         <activity android:name=".ac.GreenDbActivity" />
@@ -69,6 +65,14 @@
         <activity android:name=".ac.HandlerActivity" />
         <activity android:name=".ac.RxJavaRetrofit" />
         <activity android:name=".ac.Activity_Scroll_Unsame" />
+        <activity android:name=".ac.AllKindsAnimtion">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <!-- <activity -->
         <!-- android:name="cn.steelhome.handinfo.Activity.EntryActivity" -->
         <!-- android:hardwareAccelerated="false" /> -->

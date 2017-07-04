@@ -3,6 +3,7 @@ package wuhui.wuhuidemo.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 /**
@@ -33,8 +34,6 @@ public class MyListView extends ListView {
 //                    //还没有滑到底部
 //                    if (getFirstVisiblePosition() >= 0 && getLastVisiblePosition() != getCount() - 1) {
 //                        intercept = true;
-//                    } else {
-//
 //                    }
 //                }
 //                break;
@@ -46,5 +45,27 @@ public class MyListView extends ListView {
 //                break;
 //        }
 //        return intercept;
+//    }
+
+
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//
+//        switch (ev.getAction()) {
+//            case MotionEvent.ACTION_DOWN:
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                //不需要翻页的
+//                if (getFirstVisiblePosition() == 0 && getLastVisiblePosition() == getCount() - 1) {
+//                } else {
+//                    //还没有滑到底部
+//                    if (getFirstVisiblePosition() >= 0 && getLastVisiblePosition() != getCount() - 1) {
+//                    }
+//                }
+//                break;
+//            default:
+//                break;
+//        }
+//        return super.dispatchTouchEvent(ev);
 //    }
 }

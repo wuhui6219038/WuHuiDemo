@@ -131,6 +131,12 @@
                 android:layout_height="wrap_content"
                 android:text="滑动冲突方向一致" />
 
+            <Button
+                android:id="@+id/btn18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="各种特效" />
+
 
         </LinearLayout>
 

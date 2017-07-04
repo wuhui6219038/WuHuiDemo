@@ -55,7 +55,7 @@ public class TestLl extends LinearLayout {
                 mLastY = (int) ev.getRawY();
                 break;
             case MotionEvent.ACTION_MOVE:
-                intercept = true;
+                intercept = false;
                 break;
             default:
                 intercept = false;
@@ -63,7 +63,7 @@ public class TestLl extends LinearLayout {
 
         }
         return intercept;
-
+//        return super.onInterceptTouchEvent(ev);
     }
 
     //上一次滑动的坐标值
@@ -82,7 +82,6 @@ public class TestLl extends LinearLayout {
                 int dy = 0;
                 dy = y - mLastY;
                 View chlidView = getChildAt(0);
-                //只能向上滑，不能想下滑动
                 if (dy < 0 && getScrollY() <= chlidView.getHeight()) {
                     scrollBy(0, -dy);
                 }

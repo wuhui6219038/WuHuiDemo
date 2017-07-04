@@ -1,6 +1,7 @@
 package wuhui.wuhuidemo;
 
 import android.Manifest;
+import android.app.Fragment;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
@@ -90,6 +91,11 @@ public class MainActivity extends RxAppCompatActivity {
                 }).start();
     }
 
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
+    }
+
     private void _initXinGe() {
 //        XGPushConfig.enableDebug(this, true);
 //        XGPushManager.registerPush(getApplicationContext(), new XGIOperateCallback() {
@@ -118,7 +124,7 @@ public class MainActivity extends RxAppCompatActivity {
     }
 
     @OnClick({R.id.btn1, R.id.btn2, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9,
-            R.id.btn10, R.id.btn11, R.id.btn12, R.id.btn13, R.id.btn14, R.id.btn15,R.id.btn16})
+            R.id.btn10, R.id.btn11, R.id.btn12, R.id.btn13, R.id.btn14, R.id.btn15,R.id.btn16,R.id.btn18})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -171,6 +177,9 @@ public class MainActivity extends RxAppCompatActivity {
                 intent.setClass(this, RxJavaRetrofit.class);
                 break;
             case R.id.btn16:
+                intent.setClass(this, Activity_Scroll_Unsame.class);
+                break;
+            case R.id.btn18:
                 intent.setClass(this, Activity_Scroll_Unsame.class);
                 break;
         }
