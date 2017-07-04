@@ -3,10 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <wuhui.wuhuidemo.view.Loading_SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <wuhui.wuhuidemo.view.TestLl
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <wuhui.wuhuidemo.view.TestTv
             android:layout_width="match_parent"
