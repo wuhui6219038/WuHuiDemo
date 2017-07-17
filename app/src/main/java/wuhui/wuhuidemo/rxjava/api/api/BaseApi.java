@@ -1,6 +1,5 @@
 package wuhui.wuhuidemo.rxjava.api.api;
 
-import com.alibaba.fastjson.JSONObject;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.lang.ref.SoftReference;
@@ -44,11 +43,12 @@ public abstract class  BaseApi<T> implements Func1<T, String> {
 
     @Override
     public String call(T tBaseResultEntity) {
-        BaseResultEntity baseResulte = JSONObject.parseObject(tBaseResultEntity.toString(), BaseResultEntity.class);
-        if (baseResulte.getSuccess() == Config.DATA_FAIL) {
-            throw new HttpTimeException(baseResulte.getMessage());
-        }
-        return baseResulte.getInfo();
+//        BaseResultEntity baseResulte = JSONObject.parseObject(tBaseResultEntity.toString(), BaseResultEntity.class);
+//        if (baseResulte.getSuccess() == Config.DATA_FAIL) {
+//            throw new HttpTimeException(baseResulte.getMessage());
+//        }
+//        return baseResulte.getInfo();
+        return  null;
     }
 
     /**
