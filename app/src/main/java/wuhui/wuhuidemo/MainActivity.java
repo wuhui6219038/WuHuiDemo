@@ -35,7 +35,9 @@ import wuhui.library.network.HttpManager;
 import wuhui.library.network.api.DataApi;
 import wuhui.library.network.listener.OnNextBaseAdapter;
 import wuhui.wuhuidemo.HttpService.HttpGetService;
+import wuhui.wuhuidemo.ac.ActivityCardLayout;
 import wuhui.wuhuidemo.ac.ActivityPlayer;
+import wuhui.wuhuidemo.ac.ActivityRecycler;
 import wuhui.wuhuidemo.ac.ActivityService;
 import wuhui.wuhuidemo.ac.Activity_Scroll_Unsame;
 import wuhui.wuhuidemo.ac.AnimtaionAc;
@@ -124,7 +126,7 @@ public class MainActivity extends RxAppCompatActivity {
     }
 
     @OnClick({R.id.btn1, R.id.btn2, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9,
-            R.id.btn10, R.id.btn11, R.id.btn12, R.id.btn13, R.id.btn14, R.id.btn15,R.id.btn16,R.id.btn18})
+            R.id.btn10, R.id.btn11, R.id.btn12, R.id.btn13, R.id.btn14, R.id.btn15, R.id.btn16, R.id.btn18, R.id.btn19, R.id.btn20})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -181,6 +183,12 @@ public class MainActivity extends RxAppCompatActivity {
                 break;
             case R.id.btn18:
                 intent.setClass(this, Activity_Scroll_Unsame.class);
+                break;
+            case R.id.btn19:
+                intent.setClass(this, ActivityCardLayout.class);
+                break;
+            case R.id.btn20:
+                intent.setClass(this, ActivityRecycler.class);
                 break;
         }
         startActivity(intent);

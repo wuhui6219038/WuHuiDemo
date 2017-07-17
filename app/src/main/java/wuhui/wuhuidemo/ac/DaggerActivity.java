@@ -2,11 +2,9 @@ package wuhui.wuhuidemo.ac;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
@@ -18,8 +16,6 @@ import wuhui.wuhuidemo.R;
 import wuhui.wuhuidemo.injector.components.DaggerActivityConponent;
 import wuhui.wuhuidemo.injector.components.bean.Poetry;
 import wuhui.wuhuidemo.injector.components.customer.scope.TestScope;
-import wuhui.wuhuidemo.injector.components.customer.scope.qualifier.ForActivity;
-import wuhui.wuhuidemo.injector.components.customer.scope.qualifier.ForApplication;
 
 /**
  * Created by wuhui on 2017/3/7.

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
 
@@ -15,14 +17,20 @@ import wuhui.wuhuidemo.R;
  * Created by wuhui on 2016/12/23.
  */
 
-public class SlideItemView extends LinearLayout {
+public class SlideItemView extends ViewGroup {
     private static final String TAG = SlideItemView.class.getName();
     private static final int TAN = 2;
     private Scroller mScroller;
-    //按钮的宽度
-    private int mBtnWidth = 120;
     private float mLastX = 0;
-    private float mLastY = 0;
+    /**
+     * 当前显示位置
+     */
+    private int currentIndex = 0;
+    /**
+     * 隐藏菜单的宽度
+     */
+
+    private int slideMenuWidth = 0;
 
     public SlideItemView(Context context) {
         super(context);
@@ -34,44 +42,39 @@ public class SlideItemView extends LinearLayout {
         initView(context);
     }
 
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        int right = 0;
+        for (int index = 0; index < getChildCount(); index++) {
+            View child = getChildAt(index);
+            child.layout(right, 0, right + child.getMeasuredWidth(), child.getMeasuredHeight());
+            right += child.getMeasuredWidth();
+        }
+    }
+
     private void initView(Context context) {
-        setOrientation(LinearLayout.HORIZONTAL);
-        LayoutInflater.from(context).inflate(R.layout.slideview, this);
         mScroller = new Scroller(context);
-        mBtnWidth = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, mBtnWidth, getResources().getDisplayMetrics()));
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        float x = event.getX();
         switch (event.getAction()) {
-            case MotionEvent.ACTION_MOVE:
-                float x = event.getX();
-                float y = event.getY();
-                //计算偏移量
-                float deltaX = x - mLastX;
-                float delatY = y - mLastY;
-                mLastX = x;
-                mLastY = y;
-                if (Math.abs(deltaX) < Math.abs(delatY) * TAN) {
-                    break;
-                }
-                if (deltaX != 0) {
-                    Log.e(TAG, "getScrollX=" + getScrollX());
-                    Log.e(TAG, "deltaX=" + deltaX);
-                    float newScrollX = getScrollX() - deltaX;
-                    if (newScrollX < 0) {
-                        newScrollX = 0;
-                    } else if (newScrollX > mBtnWidth) {
-                        Log.e(TAG, "mBtnWidth=" + mBtnWidth);
-                        newScrollX = mBtnWidth;
-                    }
-                    Log.e(TAG, "newScrollX=" + newScrollX);
-                    this.scrollTo((int) newScrollX, 0);
-                }
-                break;
             case MotionEvent.ACTION_DOWN:
 
                 reset();
+                break;
+            case MotionEvent.ACTION_MOVE:
+
+                //计算偏移量
+                float deltaX = x - mLastX;
+                mLastX = x;
+                if (deltaX < 0) {
+                    deltaX = 0;
+                } else if (deltaX > slideMenuWidth) {
+                    deltaX = slideMenuWidth;
+                }
+                this.scrollBy((int) deltaX, 0);
                 break;
         }
         return true;
@@ -82,14 +85,33 @@ public class SlideItemView extends LinearLayout {
         if (offset == 0) {
             return;
         }
-        smoothScrollTo(0, 0);
+        smoothScrollTo();
 
     }
 
-    private void smoothScrollTo(int destX, int destY) {
-        int scrollX = getScrollX();
-        int delta = destX - scrollX;
-        mScroller.startScroll(scrollX, 0, delta, 0, Math.abs(delta) * 3);
+    @Override
+    public void computeScroll() {
+        if (mScroller.computeScrollOffset()) {
+            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            invalidate();// 再次调用computeScroll。
+        }
+    }
+
+    private void smoothScrollTo() {
+        mScroller.startScroll(getScrollX(), 0, _initCalculateWidth(), 0, 1000);
         invalidate();
+    }
+
+    private int _initCalculateWidth() {
+        int srollWidth = 0;
+        int currentIndex = (getScrollX() + getWidth() / 2) / getWidth();
+        if (currentIndex >= getChildCount()) {
+            currentIndex = getChildCount() - 1;
+        }
+        if (currentIndex < 0) {
+            currentIndex = 0;
+        }
+        srollWidth = currentIndex * getWidth() - getScrollX();
+        return srollWidth;
     }
 }

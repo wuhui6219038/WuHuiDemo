@@ -162,11 +162,11 @@ public class BezierView2 extends View {
         //     Log.e("点的坐标", mPoints.toString());
         canvas.drawPath(path, mPaint);
 
-        mPaint.setColor(Color.BLUE);
-        RectF rectF = new RectF(0, 0, mPoints.get(4).x, heigh);
-        RectF rectF2 = new RectF(mPoints.get(8).x, 0, width, heigh);
-        canvas.drawRect(rectF, mPaint);
-        canvas.drawRect(rectF2, mPaint);
+//        mPaint.setColor(Color.BLUE);
+//        RectF rectF = new RectF(0, 0, mPoints.get(4).x, heigh);
+//        RectF rectF2 = new RectF(mPoints.get(8).x, 0, width, heigh);
+//        canvas.drawRect(rectF, mPaint);
+//        canvas.drawRect(rectF2, mPaint);
     }
 
     @Override

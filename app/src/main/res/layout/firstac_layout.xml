@@ -3,4 +3,19 @@
 <wuhui.wuhuidemo.view.SlideItemView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/slideview"
     android:layout_width="match_parent"
-    android:layout_height="50dp"></wuhui.wuhuidemo.view.SlideItemView>
+    android:layout_height="50dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:padding="16dp"
+        android:text="我就是内容" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:padding="16dp"
+        android:text="删除" />
+</wuhui.wuhuidemo.view.SlideItemView>
