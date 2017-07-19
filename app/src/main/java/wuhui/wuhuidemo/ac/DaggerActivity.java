@@ -1,10 +1,11 @@
 package wuhui.wuhuidemo.ac;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
@@ -13,9 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import wuhui.wuhuidemo.MyApplication;
 import wuhui.wuhuidemo.R;
-import wuhui.wuhuidemo.injector.components.DaggerActivityConponent;
+import wuhui.wuhuidemo.injector.components.DaggerSingleConponet;
 import wuhui.wuhuidemo.injector.components.bean.Poetry;
-import wuhui.wuhuidemo.injector.components.customer.scope.TestScope;
+import wuhui.wuhuidemo.injector.components.bean.SingleTestEntity;
 
 /**
  * Created by wuhui on 2017/3/7.
@@ -24,30 +25,25 @@ import wuhui.wuhuidemo.injector.components.customer.scope.TestScope;
 public class DaggerActivity extends RxAppCompatActivity {
     @BindView(R.id.dagger)
     TextView dagger;
-    @TestScope
-    @Inject
-    Poetry mPoetry;
-    @TestScope
-    @Inject
-    Poetry mPoetry2;
-    @TestScope
-    @Inject
-    Poetry mPoetry3;
-    @Inject
-    Gson mGson;
-    @Inject
-    Gson mGson2;
+    @Inject()
+    SingleTestEntity singleTestEntity;
+    @Inject()
+    Poetry mPotry;
+//    @Inject
+//    Context context;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dagger);
         ButterKnife.bind(this);
-        DaggerActivityConponent.builder().applicationConoenpent(MyApplication.getInstance().getApplicationComponent()).build().inject(this);
+        DaggerSingleConponet.builder().build().inject(this);
         initView();
+
+
     }
 
     private void initView() {
-        dagger.setText(mGson.toJson(mPoetry) + "=====" + mGson2.toJson(mPoetry2) + "===========" + mGson2.toJson(mPoetry3));
+        Log.e("此时的SingleTestEntity", singleTestEntity.getDesc() + " " + mPotry.getPoems());
     }
 }

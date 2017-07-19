@@ -1,18 +1,16 @@
 package wuhui.wuhuidemo.injector.components;
 
-import com.google.gson.Gson;
+import android.content.Context;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
-import dagger.Module;
-import wuhui.wuhuidemo.injector.components.modules.MainModules;
+import wuhui.wuhuidemo.injector.components.modules.AppModule;
 
 /**
  * Created by wuhui on 2017/3/8.
  */
-@Singleton
-@Component(modules = {MainModules.class})
+@Component(modules = AppModule.class)
 public interface ApplicationConoenpent {
-    Gson getGson();
+//    Context context();
 }

@@ -1,5 +1,9 @@
 package wuhui.wuhuidemo.injector.components.modules;
 
+import com.google.gson.Gson;
+
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 import wuhui.wuhuidemo.injector.components.bean.Poetry;
@@ -12,30 +16,14 @@ import wuhui.wuhuidemo.injector.components.customer.scope.qualifier.ForApplicati
  */
 @Module
 public class PoetryModules {
-    @TestScope
+
     @Provides
-    Poetry providePoetry(String poems) {
-        return new Poetry(poems);
+    Poetry providePoetry() {
+        return new Poetry("你好");
     }
 
     @Provides
-    String providePoems() {
-        return "只有意志坚强的人，才能到达彼岸";
+    Gson provideGson() {
+        return new Gson();
     }
-
-    @TestScope
-    @ForActivity
-    @Provides
-    Poetry providePoetryForActivity() {
-        return new Poetry("我是为activity专用的");
-    }
-
-    @TestScope
-    @ForApplication
-    @Provides
-    Poetry providePoetryForApplication() {
-        return new Poetry("我是为Application专用的");
-    }
-
-
 }

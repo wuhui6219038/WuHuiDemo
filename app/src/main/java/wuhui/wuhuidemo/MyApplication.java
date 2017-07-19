@@ -5,6 +5,8 @@ import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
 
 import wuhui.wuhuidemo.injector.components.ApplicationConoenpent;
+import wuhui.wuhuidemo.injector.components.DaggerApplicationConoenpent;
+import wuhui.wuhuidemo.injector.components.modules.AppModule;
 
 /**
  * Created by wuhui on 2017/3/8.
@@ -28,6 +30,9 @@ public class MyApplication extends Application {
             return;
         }
         LeakCanary.install(this);
+        if (mApplicationComponent == null) {
+            mApplicationComponent = DaggerApplicationConoenpent.builder().appModule(new AppModule(this)).build();
+        }
     }
 
     public ApplicationConoenpent getApplicationComponent() {

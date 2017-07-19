@@ -124,7 +124,7 @@ public class SimpleDividerDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         super.onDrawOver(c, parent, state);
-        addHeader(c, parent, state);
+     //   addHeader(c, parent, state);
         // addFlag(c, parent, state);
 
     }
