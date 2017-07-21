@@ -9,10 +9,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <wuhui.wuhuidemo.view.RegionClickView
+        <wuhui.wuhuidemo.view.BezierView2
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/regionClickView" />
+            android:layout_height="200dp" />
+
+        <wuhui.wuhuidemo.view.RegionClickView
+            android:id="@+id/regionClickView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
 
         <wuhui.wuhuidemo.view.CustomPathMeasure
             android:layout_width="match_parent"
@@ -22,9 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 
-        <wuhui.wuhuidemo.view.BezierView2
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
 
         <wuhui.wuhuidemo.view.CustomView
             android:id="@+id/cv"

@@ -7,7 +7,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.greenrobot:greendao-gradle-plugin:+'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
     }
 }
 greendao {
@@ -19,7 +19,9 @@ greendao {
 android {
     compileSdkVersion 24
     buildToolsVersion '25.0.0'
+    aaptOptions.cruncherEnabled = false
     defaultConfig {
+        multiDexEnabled true
         applicationId "wuhui.wuhuidemo"
         minSdkVersion 19
         targetSdkVersion 24
@@ -38,12 +40,15 @@ android {
             java.srcDirs = ['src/main/java']
             res.srcDirs = [
                     'src/main/res/layout/module',
-                    'src/main/res/layout/module2',
+                    'src/main/res/layout/customview',
                     'src/main/res/layout/module3',
                     'src/main/res/layout/module4',
                     'src/main/res/layout',
                     'src/main/res'
             ]
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
         }
     }
     configurations.all {
@@ -52,18 +57,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:support-annotations:+'
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.android.support:design:+'
+    compile 'com.android.support:cardview-v7:+'
     testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:8.3.0'
     apt 'com.jakewharton:butterknife-compiler:8.3.0'
-
-
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
@@ -74,12 +78,19 @@ dependencies {
     compile 'com.alibaba:fastjson:+'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
     compile 'com.squareup.okhttp3:logging-interceptor:+'
-    compile 'com.trello:rxlifecycle:+'
-    compile 'com.trello:rxlifecycle-components:+'
-    compile 'org.greenrobot:greendao:+'
-    compile 'org.greenrobot:greendao-generator:+'
+    compile 'com.trello:rxlifecycle:1.0'
+    compile 'com.trello:rxlifecycle-components:1.0'
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'org.greenrobot:greendao-generator:3.2.2'
     //dagger2 配置
     apt 'com.google.dagger:dagger-compiler:2.6'
     compile 'com.google.dagger:dagger:2.6'
     compile project(path: ':library')
+    compile files('libs/jg_filter_sdk_1.1.jar')
+    compile files('libs/mid-core-sdk-3.7.2.jar')
+    compile files('libs/wup-1.0.0.E-SNAPSHOT.jar')
+    compile files('libs/Xg_sdk_v3.1_20170417_0946.jar')
+
+    compile 'com.android.support:multidex:1.0.1'
+
 }

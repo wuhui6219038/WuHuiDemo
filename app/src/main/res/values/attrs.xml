@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--布局中的文字-->
+    <attr name="text" format="string" />
+    <!--文字的大小-->
+    <attr name="textSize" format="dimension" />
+    <!--文字的颜色-->
+    <attr name="textColor" format="color" />
+    <declare-styleable name="labelView_declare">
+        <!--label的标题-->
+        <attr name="leftText" format="string" />
+        <!--输入框的提示-->
+        <attr name="rightHint" format="reference" />
+        <!--文字的大小-->
+        <attr name="textSize" />
+        <!--文字的颜色-->
+        <attr name="leftTextColor" format="color" />
+        <attr name="rightTextColor" format="color" />
+        <!--editView的背景色-->
+        <attr name="background"/>
+    </declare-styleable>
+</resources>
