@@ -14,17 +14,23 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import wuhui.wuhuidemo.R;
 import wuhui.wuhuidemo.adapter.RecyclerViewAdapter;
+import wuhui.wuhuidemo.annotation.TestAnnotation;
 import wuhui.wuhuidemo.itemdecoration.SimpleDividerDecoration;
 
 /**
  * Created by wuhui on 2017/7/17.
  */
 
-public class ActivityRecycler extends RxAppCompatActivity {
+public class ActivityRecycler extends BaseActivity {
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private List<String> datas;
+
+
     private RecyclerViewAdapter mAdapter;
+
+    @TestAnnotation(target = "ActivityRecycler")
+    private Object obj;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -35,6 +35,7 @@ import rx.functions.Action1;
 import wuhui.library.WuHuiTest;
 import wuhui.wuhuidemo.R;
 import wuhui.wuhuidemo.adapter.MusicAapter;
+import wuhui.wuhuidemo.annotation.TestAnnotation;
 import wuhui.wuhuidemo.entity.MusicBean;
 import wuhui.wuhuidemo.service.PlayerService;
 
@@ -42,7 +43,7 @@ import wuhui.wuhuidemo.service.PlayerService;
  * Created by wuhui on 2017/4/12.
  */
 
-public class ActivityPlayer extends RxAppCompatActivity implements MusicAapter.ItemClickListenser {
+public class ActivityPlayer extends BaseActivity implements MusicAapter.ItemClickListenser {
     private static final String TAG = "ActivityPlayer";
     /**
      * 歌曲总时间标示
@@ -58,6 +59,7 @@ public class ActivityPlayer extends RxAppCompatActivity implements MusicAapter.I
     RecyclerView musiclist;
     @BindView(R.id.musicProgressBar)
     SeekBar musicProgressBar;
+    @TestAnnotation(target = "ActivityPlayer")
     private Messenger mService;
     private Messenger clientMessenger;
     private MusicAapter mAdapter;

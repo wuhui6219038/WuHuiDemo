@@ -6,6 +6,7 @@ import java.util.Map;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 import rx.Observable;
+import rx.Single;
 import wuhui.wuhuidemo.rxjava.api.api.BaseResultEntity;
 
 /**
@@ -15,4 +16,5 @@ import wuhui.wuhuidemo.rxjava.api.api.BaseResultEntity;
 public interface HttpGetService {
     @GET("index.php")
     Observable<String> getZhiShuData(@QueryMap Map<String, Object> map);
+    Single<String> getZhiShuData2(@QueryMap Map<String, Object> map);
 }

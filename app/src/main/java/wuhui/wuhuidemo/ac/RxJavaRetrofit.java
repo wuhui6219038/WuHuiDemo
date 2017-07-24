@@ -12,10 +12,13 @@ import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
-import java.io.File;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +27,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Retrofit;
 import rx.Observable;
+import rx.Observer;
+import rx.subjects.AsyncSubject;
 import wuhui.library.network.HttpDownManager;
 import wuhui.library.network.HttpManager;
 import wuhui.library.network.api.DataApi;
@@ -32,13 +37,14 @@ import wuhui.library.network.listener.HttpDownOnNextAdapter;
 import wuhui.library.network.listener.OnNextBaseAdapter;
 import wuhui.wuhuidemo.HttpService.HttpGetService;
 import wuhui.wuhuidemo.R;
-import wuhui.wuhuidemo.entity.ZhiShuEntity;
+import wuhui.wuhuidemo.annotation.AnnotationBean;
+import wuhui.wuhuidemo.annotation.TestAnnotation;
 
 /**
  * Created by wuhui on 2017/6/6.
  */
 
-public class RxJavaRetrofit extends RxAppCompatActivity {
+public class RxJavaRetrofit extends BaseActivity {
     private static final String TAG = "RxJavaRetrofit";
 
     @Override
@@ -48,14 +54,85 @@ public class RxJavaRetrofit extends RxAppCompatActivity {
         ButterKnife.bind(this);
     }
 
+    private void _initAsyncSubject() {
+        String[] value = {"one", "two", "three"};
+        AsyncSubject<String> subject = AsyncSubject.create();
+        subject.onNext("one");
+        Observable childObservable = subject.asObservable();
+        Observer observer = new Observer<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.e(TAG, s);
+            }
+        };
+        subject.subscribe(observer);
+    }
+
+    private String target = null;
+
+    private void TestCreator() throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, InstantiationException {
+        Class targetClass = Class.forName("wuhui.wuhuidemo.annotation.AnnotationBean");
+        Field[] fields = targetClass.getDeclaredFields();
+        Method[] methods = targetClass.getMethods();
+        for (Field field : fields) {
+            if (field.isAnnotationPresent(TestAnnotation.class)) {
+                for (Annotation anno : field.getDeclaredAnnotations()) {
+                    Log.e(TAG, "Annotation in Method '"
+                            + field + "' : " + anno);
+                }
+                TestAnnotation testAnnotation = field.getAnnotation(TestAnnotation.class);
+                target = testAnnotation.target();
+            }
+        }
+        for (Method method : methods) {
+            if (method.isAnnotationPresent(TestAnnotation.class)) {
+                for (Annotation anno : method.getDeclaredAnnotations()) {
+                    Log.e(TAG, "Annotation in Method '"
+                            + method + "' : " + anno);
+
+                }
+                TestAnnotation testAnnotation = method.getAnnotation(TestAnnotation.class);
+                if (testAnnotation.target().equals(target)) {
+                    method.invoke(targetClass.newInstance(), "测试方法的");
+                } else {
+                    Log.e(TAG, "没有发现相同的注解");
+                }
+            }
+        }
+
+    }
+
+
     @OnClick({R.id.btn1, R.id.btn2})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn1:
-                getData();
+                try {
+                    TestCreator();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                }
+//                _initAsyncSubject();
+                // getData();
                 break;
             case R.id.btn2:
-                downLoad();
+                //downLoad();
                 break;
         }
     }
@@ -78,6 +155,7 @@ public class RxJavaRetrofit extends RxAppCompatActivity {
             @Override
             public Observable getObservable(Retrofit retrofit) {
                 return retrofit.create(HttpGetService.class).getZhiShuData(params);
+//                return retrofit.create(HttpGetService.class).getZhiShuData2(params)
             }
         });
     }
