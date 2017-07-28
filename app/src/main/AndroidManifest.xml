@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="wuhui.wuhuidemo">
 
+    <permission android:name="android.permission.WRITE_APN_SETTINGS" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -34,7 +36,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ac.FirstAc" />
         <activity android:name=".ac.GreenDbActivity" />
@@ -70,11 +76,7 @@
         <activity android:name=".ac.ActivityPlayer" />
         <activity android:name=".ac.HandlerActivity" />
         <activity android:name=".ac.RxJavaRetrofit">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ac.Activity_Scroll_Unsame" />
         <activity android:name=".ac.ActivityCardLayout" />
@@ -95,7 +97,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-
+        <service android:name=".service.UpdateService" />
         <!---->
         <!--&lt;!&ndash;信鸽配置&ndash;&gt;-->
         <!--<receiver-->

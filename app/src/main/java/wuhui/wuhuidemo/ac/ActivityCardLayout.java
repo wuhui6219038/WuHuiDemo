@@ -5,13 +5,17 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Observable;
+import rx.functions.Func1;
 import wuhui.wuhuidemo.R;
 import wuhui.wuhuidemo.adapter.CardAdapter;
 import wuhui.wuhuidemo.callback.CardItemTouchHelperCallback;
@@ -67,6 +71,18 @@ public class ActivityCardLayout extends RxAppCompatActivity {
         list.add(R.mipmap.test);
         list.add(R.mipmap.test);
         list.add(R.mipmap.test);
+
+    }
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        Observable.just(1, 2, 3).repeatWhen(new Func1<Observable<? extends Void>, Observable<?>>() {
+            @Override
+            public Observable<?> call(Observable<? extends Void> observable) {
+                return null;
+            }
+        });
 
     }
 }

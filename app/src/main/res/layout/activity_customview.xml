@@ -9,11 +9,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <wuhui.wuhuidemo.view.BezierView2
+        <EditText
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="输入框" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <wuhui.wuhuidemo.view.BezierView2
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <wuhui.wuhuidemo.view.WaterWaveView
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+        </FrameLayout>
+
+        <wuhui.wuhuidemo.view.WaterRippleView
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 
-        <wuhui.wuhuidemo.view.WaterRippleView
+        <wuhui.wuhuidemo.view.DashPathEffectView
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 

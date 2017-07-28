@@ -6,29 +6,18 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
-import android.graphics.PointF;
-import android.graphics.RectF;
-import android.os.Handler;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by wuhui on 2017/1/19.
  * 水波纹
  */
 
-public class BezierView2 extends View {
+public class WaterWaveView extends View {
     private Path path;
     private Paint mPaint;
     private Path mSecondPath;
@@ -43,28 +32,29 @@ public class BezierView2 extends View {
     /**
      * 峰值
      */
-    private int mWaveHeight = 20;
+    private int mWaveHeight = 30;
     /**
      * 波长
      */
-    private int mWaveWidth = 900;
+    private int mWaveWidth = 800;
     /**
      * 一个屏幕内几个周期
      */
     private int mWaveCount;
     private ValueAnimator valueAnimator;
 
-    public BezierView2(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WaterWaveView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+
     }
 
-    public BezierView2(Context context) {
+    public WaterWaveView(Context context) {
         super(context);
         init();
     }
 
-    public BezierView2(Context context, AttributeSet attrs) {
+    public WaterWaveView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
 
@@ -84,6 +74,7 @@ public class BezierView2 extends View {
         mSecondPaint.setStrokeWidth(2);
         mSecondPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         _initValueAnimator();
+        setVisibility(GONE);
     }
 
     @Override
@@ -111,7 +102,7 @@ public class BezierView2 extends View {
 
     }
 
-    private int offset = -mWaveWidth / 3;
+    private int offset = mWaveWidth / 2;
 
     private void drawFirst(Canvas canvas) {
         path.reset();
@@ -131,10 +122,11 @@ public class BezierView2 extends View {
             mSecondPath.quadTo(-mWaveWidth / 4 + mLeftWaveMoveLength + i * mWaveWidth + offset, 3 * mWaveHeight, mLeftWaveMoveLength + i * mWaveWidth + offset, mWaveHeight);
 
         }
-        path.lineTo(getWidth(), getHeight());
-        path.lineTo(0, getHeight());
-        path.close();
-        canvas.drawPath(path, mPaint);
+//        path.lineTo(getWidth(), getHeight());
+//        path.lineTo(0,  getHeight());
+//        path.close();
+//
+//        canvas.drawPath(path, mPaint);
         mSecondPath.lineTo(getWidth(), getHeight());
         mSecondPath.lineTo(0, getHeight());
         mSecondPath.close();
@@ -162,10 +154,10 @@ public class BezierView2 extends View {
 
     private void _initValueAnimator() {
         valueAnimator = ValueAnimator.ofInt(0, mWaveWidth);
-        valueAnimator.setDuration(3000);
+        valueAnimator.setDuration(2000);
         valueAnimator.setStartDelay(300);
-        valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

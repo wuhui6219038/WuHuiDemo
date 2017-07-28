@@ -2,6 +2,9 @@ package wuhui.wuhuidemo.injector.components.modules;
 
 import android.content.Context;
 
+import com.tbruyelle.rxpermissions.RxPermissions;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -20,7 +23,9 @@ public class AppModule {
     }
 
     @Provides
+    @Singleton
     Context provideAppliction() {
         return application;
     }
+
 }

@@ -8,6 +8,9 @@ import android.util.Log;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import rx.Observable;
+import rx.Single;
+import rx.subjects.AsyncSubject;
 import wuhui.wuhuidemo.uitl.RsaUtils;
 
 import static org.junit.Assert.*;
@@ -31,4 +34,17 @@ public class ExampleInstrumentedTest {
     public void testKeyPair() {
         Log.e("RSA:", RsaUtils.generateRSAKeyPair(1024).getPrivate().toString());
     }
+
+    @Test
+    public void testSingle() {
+        String[] value = {"1", "2", "3"};
+//        Single<String>.fr
+        AsyncSubject<String> asyncSubject = AsyncSubject.create();
+        asyncSubject.onNext("one");
+        asyncSubject.onNext("two");
+        asyncSubject.onNext("three");
+        asyncSubject.subscribe(asyncSubject);
+
+    }
+
 }

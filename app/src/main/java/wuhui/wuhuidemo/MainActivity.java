@@ -52,6 +52,7 @@ import wuhui.wuhuidemo.ac.RxJavaRetrofit;
 import wuhui.wuhuidemo.ac.ZheDieAc;
 import wuhui.wuhuidemo.ac.ZuoBiaoXiAc;
 import wuhui.wuhuidemo.entity.ZhiShuEntity;
+import wuhui.wuhuidemo.service.UpdateService;
 
 public class MainActivity extends RxAppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -125,12 +126,14 @@ public class MainActivity extends RxAppCompatActivity {
         Log.e(TAG, "onRestoreInstanceState");
     }
 
-    @OnClick({R.id.btn1, R.id.btn2, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9,
+    @OnClick({R.id.btn0, R.id.btn1, R.id.btn2, R.id.btn4, R.id.btn5, R.id.btn6, R.id.btn7, R.id.btn8, R.id.btn9,
             R.id.btn10, R.id.btn11, R.id.btn12, R.id.btn13, R.id.btn14, R.id.btn15, R.id.btn16, R.id.btn18, R.id.btn19, R.id.btn20})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
-
+            case R.id.btn0:
+                startService(new Intent(this, UpdateService.class));
+                break;
             case R.id.btn1:
                 intent.setClass(this, FirstAc.class);
                 break;
@@ -191,7 +194,8 @@ public class MainActivity extends RxAppCompatActivity {
                 intent.setClass(this, ActivityRecycler.class);
                 break;
         }
-        startActivity(intent);
+        if (view.getId() != R.id.btn0)
+            startActivity(intent);
     }
 
     @Override
@@ -214,6 +218,7 @@ public class MainActivity extends RxAppCompatActivity {
             }
         }
     }
+
 
 //    private void test() {
 //        OnNextBaseAdapter<ZhiShuEntity> onNextBaseAdapter = new OnNextBaseAdapter<ZhiShuEntity>() {

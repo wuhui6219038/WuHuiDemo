@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 
 import dagger.Module;
 import dagger.Provides;
+import wuhui.wuhuidemo.injector.components.customer.scope.qualifier.ForActivity;
 
 /**
  * Created by wuhui on 2017/7/18.

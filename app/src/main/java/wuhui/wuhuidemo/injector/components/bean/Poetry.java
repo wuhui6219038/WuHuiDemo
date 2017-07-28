@@ -8,7 +8,8 @@ import javax.inject.Inject;
 
 public class Poetry {
     private String mPemo;
-@Inject
+
+    @Inject
     public Poetry() {
         mPemo = "生活就像海洋";
     }

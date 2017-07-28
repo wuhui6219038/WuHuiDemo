@@ -3,11 +3,14 @@ package wuhui.wuhuidemo.injector.components.modules;
 import android.util.Log;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import wuhui.wuhuidemo.injector.components.bean.Poetry;
 import wuhui.wuhuidemo.injector.components.bean.SingleTestEntity;
+import wuhui.wuhuidemo.injector.components.customer.scope.TestScope;
+import wuhui.wuhuidemo.injector.components.customer.scope.qualifier.ForActivity;
 import wuhui.wuhuidemo.injector.components.customer.scope.qualifier.SingleBean;
 import wuhui.wuhuidemo.injector.components.customer.scope.qualifier.PotryBean;
 
@@ -16,6 +19,7 @@ import wuhui.wuhuidemo.injector.components.customer.scope.qualifier.PotryBean;
  */
 @Module
 public class SingleModule {
+    @TestScope
     @Provides
     SingleTestEntity provideSingleTestEntity(@SingleBean String msg) {
         return new SingleTestEntity(msg);
@@ -26,15 +30,14 @@ public class SingleModule {
         return new Poetry(msg);
     }
 
-
-    @Provides
     @SingleBean
+    @Provides
     String getTestMsg() {
         return "我就是个单例";
     }
 
-    @Provides
     @PotryBean
+    @Provides
     String getTest2Msg() {
         return "我是一首美丽的诗";
     }
@@ -42,6 +45,5 @@ public class SingleModule {
     @Inject
     void _initTest() {
         Log.e("ss", "我被调用了");
-
     }
 }
